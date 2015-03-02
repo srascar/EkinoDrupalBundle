@@ -29,42 +29,10 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('ekino_drupal', 'array');
-
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
-                ->scalarNode('root')->isRequired()->end()
-                ->scalarNode('logger')->defaultValue('ekino.drupal.logger.watchdog')->end()
-                ->scalarNode('strategy_id')->defaultValue('ekino.drupal.delivery_strategy.symfony')->end()
-                ->arrayNode('provider_keys')
-                    ->prototype('scalar')->cannotBeEmpty()->end()
-                ->end()
-                ->arrayNode('entity_repositories')
-                    ->prototype('array')
-                        ->children()
-                            ->scalarNode('type')->cannotBeEmpty()->defaultValue('node')->end()
-                            ->scalarNode('bundle')->end()
-                            ->scalarNode('class')->cannotBeEmpty()->defaultValue('Ekino\Bundle\DrupalBundle\Entity\EntityRepository')->end()
-                        ->end()
-                    ->end()
-                ->end()
-                ->arrayNode('table_prefix')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->booleanNode('enabled')->defaultFalse()->end()
-                        ->scalarNode('prefix')->defaultValue('symfony__')->end()
-                        ->arrayNode('exclude')
-                            ->prototype('scalar')->end()
-                            ->defaultValue(array('users'))
-                        ->end()
-                    ->end()
-                ->end()
-                ->arrayNode('session')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->booleanNode('refresh_cookie_lifetime')->defaultFalse()->end()
-                    ->end()
-                ->end()
+                ->scalarNode('delivery_strategy')->defaultValue('symfony')->end()
             ->end();
 
         return $treeBuilder;

@@ -8,6 +8,10 @@ A [BC BREAK] means the update will break the project for many reasons:
 * class refactoring
 
 
+### 2015-03-02
+
+* [BC BREAK] This version is no more compatible with the previous ones.
+
 ### 2014-05-19
 
 * [BC BREAK] Third argument of EntityRepository::findBy method is now $fieldConditions.
