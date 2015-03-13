@@ -36,6 +36,7 @@ class DrupalListener
     public function __construct(DrupalKernelInterface $drupalKernel, $deliveryStrategy = DeliveryStrategies::SYMFONY_DELIVERY_STRATEGY)
     {
         $this->drupalKernel = $drupalKernel;
+        $this->drupalKernel->boot();
         $this->deliveryStrategy = $deliveryStrategy;
     }
 
@@ -51,7 +52,7 @@ class DrupalListener
         $exception = $event->getException();
 
         if ($exception instanceof HttpExceptionInterface) {
-            $response = $this->getDrupalKernel()->handle($event->getRequest());
+            $response = $this->drupalKernel->handle($event->getRequest());
             $event->setResponse($response);
         }
     }
@@ -71,21 +72,8 @@ class DrupalListener
             return;
         }
 
-        $response = $this->getDrupalKernel()->handle($event->getRequest());
+        $response = $this->drupalKernel->handle($event->getRequest());
         $event->setResponse($response);
         $event->stopPropagation();
     }
-
-    /**
-     * Boot the Drupal kernel before returning it
-     *
-     * @return DrupalKernelInterface
-     */
-    public function getDrupalKernel()
-    {
-        $this->drupalKernel->boot();
-
-        return $this->drupalKernel;
-    }
-
 }
