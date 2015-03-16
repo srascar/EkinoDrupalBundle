@@ -50,8 +50,10 @@ class DrupalListener
         }
 
         $exception = $event->getException();
+        $request = $event->getRequest();
 
-        if ($exception instanceof HttpExceptionInterface) {
+        // Prevent listener from processing exceptions thrown when request has been handled
+        if ($exception instanceof HttpExceptionInterface && $request->attributes->get('_controller') === null) {
             $response = $this->drupalKernel->handle($event->getRequest());
             $event->setResponse($response);
         }
