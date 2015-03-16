@@ -36,7 +36,6 @@ class DrupalListener
     public function __construct(DrupalKernelInterface $drupalKernel, $deliveryStrategy = DeliveryStrategies::SYMFONY_DELIVERY_STRATEGY)
     {
         $this->drupalKernel = $drupalKernel;
-        $this->drupalKernel->boot();
         $this->deliveryStrategy = $deliveryStrategy;
     }
 

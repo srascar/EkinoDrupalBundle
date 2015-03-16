@@ -32,6 +32,7 @@ trait EkinoDrupalKernelTrait
     public function initDrupalKernel(Request $request, $classLoader, $environment, $allowDumping = true)
     {
         $this->drupalKernel = DrupalKernel::createFromRequest($request, $classLoader, $environment, $allowDumping);
+        $this->drupalKernel->boot();
     }
 
     /**
