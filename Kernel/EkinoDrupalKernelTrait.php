@@ -33,16 +33,8 @@ trait EkinoDrupalKernelTrait
     {
         // Get DrupalKernel instance
         $this->drupalKernel = DrupalKernel::createFromRequest($request, $classLoader, $environment, $allowDumping);
-
-        // Load legacy includes
-        $this->drupalKernel->loadLegacyIncludes();
-
         // Boot the kernel to init container
         $this->drupalKernel->boot();
-
-        // Load all legacy modules
-        $this->drupalKernel->getContainer()->get('module_handler')->loadAll();
-
         // set the current request in DrupalKernel
         $this->drupalKernel->getContainer()->get('request_stack')->push($request);
     }
