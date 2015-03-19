@@ -5,6 +5,7 @@
   "keywords": ["components", "drupal"],
   "homepage": "https://github.com/ekino/EkinoDrupalBundle",
   "license": "MIT",
+  "version": "0.1.0",
   "authors": [
     {
       "name": "Sylvain Rascar",
@@ -25,5 +26,9 @@
   "autoload": {
     "psr-0": { "Ekino\\Bundle\\DrupalBundle": "" }
   },
-  "target-dir": "Ekino/Bundle/DrupalBundle"
+  "target-dir": "Ekino/Bundle/DrupalBundle",
+  "dist": {
+    "url": "https://github.com/srascar/EkinoDrupalBundle/archive/drupal_8-dev.zip",
+    "type": "zip"
+  }
 }
