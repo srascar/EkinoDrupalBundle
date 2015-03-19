@@ -1,8 +1,7 @@
 {
-    "name": "ekino/drupal-bundle",
-    "version": "0.1",
-    "dist": {
-        "url": "https://github.com/srascar/EkinoDrupalBundle/archive/drupal_8-dev.zip",
-        "type": "zip"
+    "packages": {
+        "ekino/drupal-bundle": {
+            "dev-master": { @composer.json }
+        }
     }
 }
