@@ -1,7 +1,7 @@
 {
     "packages": {
         "ekino/drupal-bundle": {
-            "dev-master": { @composer.json }
+            "dev-master": { "~0.1" }
         }
     }
 }
